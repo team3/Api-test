@@ -12,7 +12,7 @@ object StringProcessingActor {
 
 class StringProcessingActor extends Actor with ActorLogging {
   override def receive: Receive = {
-    case CollectionPayload(strings) => log.info(strings.mkString(","))
+    case CollectionPayload(strings) =>
       sender() ! StringsComparisonResult(sort(strings))
     case _ => log.error("Unsupported message")
   }
